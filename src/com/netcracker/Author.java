@@ -1,3 +1,4 @@
+package com.netcracker;
 
 import java.util.Objects;
 enum Gender{Agender,Androgyne, Androgynes,Androgynous,Bigender, Cis,Female,Male,Cisgender,FTM,Genderqueer,Trans,Other}

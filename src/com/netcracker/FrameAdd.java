@@ -1,13 +1,14 @@
+package com.netcracker;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class FrameAdd extends JFrame{
+//public class com.netcracker.FrameAdd extends JFrame{
+public class FrameAdd  extends JDialog{
     private Book BookNew;
-    private  boolean G=true;
+    private  boolean check=true;
     public FrameAdd(BookModel m, Book f1,int rowIndex) {
 
             JFrame jf = new JFrame("Add new Information");
@@ -38,13 +39,13 @@ public class FrameAdd extends JFrame{
             JTextField price = new JTextField(Double.toString(f1.getPrice()), 15);
             panelAdd.add(price);
 
-            JLabel AName = new JLabel("Author Name:");
+            JLabel AName = new JLabel("com.netcracker.Author Name:");
             panelAdd.add(AName);
             JTextField AuthorName = new JTextField(f1.getAuthor().getName(), 15);
             panelAdd.add(AuthorName);
 
 
-            JLabel Gender1 = new JLabel("Gender:");
+            JLabel Gender1 = new JLabel("com.netcracker.Gender:");
             panelAdd.add(Gender1);
             Gender[] genders = {Gender.Female, Gender.Male, Gender.Trans, Gender.Other, Gender.Agender, Gender.Androgyne, Gender.Androgynes, Gender.Androgynous, Gender.Bigender, Gender.Cis, Gender.Cisgender, Gender.FTM, Gender.Genderqueer};
             JComboBox<Gender> gender = new JComboBox<>(genders);
@@ -97,10 +98,10 @@ public class FrameAdd extends JFrame{
                     if ((qty1.equals("")) || (name1.equals("")) || (email.equals("")) || (author.equals(""))) {
                         JOptionPane.showMessageDialog(btnAdd2, "All fields must be entered");
                     } else {
-                        if (Valid(qty1) == false) {
+                        if (ValidQty(qty1) == false) {
                             JOptionPane.showMessageDialog(btnAdd2, "Enter correct qty");
                         } else {
-                            if (Valid1(price.getText()) == false) {
+                            if (ValidPrice(price.getText()) == false) {
                                 JOptionPane.showMessageDialog(btnAdd2, "Enter correct price");
 
                             }
@@ -112,8 +113,8 @@ public class FrameAdd extends JFrame{
                                 else {
                                 Author AuthorNew = new Author(AuthorName.getText(), Email.getText(), GAdd);
                                 BookNew = new Book(name1, Integer.parseInt(qty1), Integer.parseInt(year.getText()), Double.parseDouble(price.getText()), AuthorNew);
-                                Swing.setI(true);
-                                G = false;
+                                Swing.setChanges(true);
+                                    check = false;
                                 outText.setText("Success!");
 
                                 m.addBook(BookNew);
@@ -125,7 +126,7 @@ public class FrameAdd extends JFrame{
             ActionListener exitAction = new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    if (G) {
+                    if (check) {
                         int res = JOptionPane.showConfirmDialog(btnExit, "Are you sure want to exit?" , "", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                         if (res == JOptionPane.YES_OPTION) {
                             jf.dispose();
@@ -171,10 +172,10 @@ public class FrameAdd extends JFrame{
                     if ((qty1.equals("")) || (name1.equals("")) || (email.equals("")) || (author.equals(""))) {
                         JOptionPane.showMessageDialog(btnEdit, "All fields must be entered");
                     } else {
-                        if (Valid(qty1) == false) {
+                        if (ValidQty(qty1) == false) {
                             JOptionPane.showMessageDialog(btnEdit, "Enter correct qty");
                         } else {
-                            if (Valid1(price.getText()) == false) {
+                            if (ValidPrice(price.getText()) == false) {
                                 JOptionPane.showMessageDialog(btnEdit, "Enter correct price");
                             }
                                  else {
@@ -185,8 +186,8 @@ public class FrameAdd extends JFrame{
                             else {
                                 Author AuthorNew = new Author(AuthorName.getText(), Email.getText(), GAdd);
                                 BookNew = new Book(name1, Integer.parseInt(qty1), Integer.parseInt(year.getText()), Double.parseDouble(price.getText()), AuthorNew);
-                                Swing.setI(true);
-                                G = false;
+                                Swing.setChanges(true);
+                                        check = false;
 
                                 m.addBook(f1,BookNew,rowIndex);
                                 jf.dispose();
@@ -215,7 +216,7 @@ public class FrameAdd extends JFrame{
 
 
 
-        private boolean Valid (String str){
+        private boolean ValidQty (String str){
             try {
                 int QTY = Integer.parseInt(str);
                 if (QTY > 0)
@@ -226,7 +227,7 @@ public class FrameAdd extends JFrame{
             }
         }
 
-        private boolean Valid1 (String str){
+        private boolean ValidPrice (String str){
 
             try {
                 double Price = Double.parseDouble(str);

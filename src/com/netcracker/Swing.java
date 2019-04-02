@@ -1,6 +1,4 @@
-
-
-import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
+package com.netcracker;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,14 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Swing extends JFrame {
-   static private  boolean I=false;
+   static private  boolean changes=false;
 
-   static public void setI(boolean i) {
-        I = i;
+   static public void setChanges(boolean i) {
+       changes = i;
     }
 
     public static boolean isI() {
-        return I;
+        return changes;
     }
   static  private double a=2.91;
 
@@ -73,7 +71,7 @@ public class Swing extends JFrame {
         ActionListener addInfo = new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                Author startAuthor = new Author("","",Gender.Other);
+                Author startAuthor = new Author("","", Gender.Other);
                 Book startBookModel  = new Book( "", 0,0, 0, startAuthor);
                 FrameAdd frameAdd = new FrameAdd(m,startBookModel,-1);
             }
@@ -85,7 +83,7 @@ public class Swing extends JFrame {
 
         ActionListener exitAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(I==true) {
+                if(changes==true) {
                     int res = JOptionPane.showConfirmDialog(buttonExit, "Want to exit without saving?" , "", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                     if (res == JOptionPane.YES_OPTION) {
                         dispose();
@@ -104,7 +102,7 @@ public class Swing extends JFrame {
                         bufwr.write(f.toString());
                         bufwr.newLine();
                     }
-                    I=false;
+                    changes=false;
                     bufwr.close();
                     wr.close();
                 }
@@ -136,7 +134,7 @@ public class Swing extends JFrame {
                     int delIndex = selectRows[i];
                     m.deleteBook(model.getBook(delIndex));
                 }
-                I=true;
+                changes=true;
                 table.updateUI();
             }
         };
@@ -150,7 +148,8 @@ public class Swing extends JFrame {
                 try {
                     new Swing();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                   // e.printStackTrace();
+                    JOptionPane.showMessageDialog(new JFrame(),"File can't be opened");
                 }
             }
         });

@@ -1,7 +1,6 @@
-
+package com.netcracker;
 
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,8 +25,8 @@ public class BookModel extends AbstractTableModel {
             books.add(new Book(info[0], Integer.parseInt(info[2]),Integer.parseInt(info[1]), Double.parseDouble(info[3]),new Author(info[4],info[5],gender)));
         }
     }
- /*  public BookModel() {
-        books.add(new Book("123",100,10.5,new Author("456","789","m")));
+ /*  public com.netcracker.BookModel() {
+        books.add(new com.netcracker.Book("123",100,10.5,new com.netcracker.Author("456","789","m")));
     }*/
 
     public void addBook(Book b){
@@ -82,14 +81,14 @@ public class BookModel extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column){
             case 0:
-                return "Book name";
+                return "com.netcracker.Book name";
 
             case 2:
                 return "Year";
             case 4:
-                return "Author";
+                return "com.netcracker.Author";
             case 6:
-                return "Gender";
+                return "com.netcracker.Gender";
             case 5:
                 return "Email";
             case 3:
