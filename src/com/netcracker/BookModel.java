@@ -81,14 +81,14 @@ public class BookModel extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column){
             case 0:
-                return "com.netcracker.Book name";
+                return "Book name";
 
             case 2:
                 return "Year";
             case 4:
-                return "com.netcracker.Author";
+                return "Author";
             case 6:
-                return "com.netcracker.Gender";
+                return "Gender";
             case 5:
                 return "Email";
             case 3:
