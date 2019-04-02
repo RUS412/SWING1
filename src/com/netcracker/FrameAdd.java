@@ -11,7 +11,7 @@ public class FrameAdd  extends JDialog{
     private  boolean check=true;
     public FrameAdd(BookModel m, Book f1,int rowIndex) {
 
-            JFrame jf = new JFrame("Add new Information");
+             JDialog jf = new JDialog();
             jf.setSize(500, 350);
             jf.setVisible(true);
             JPanel panelAdd = new JPanel(new GridLayout(9, 7, 5, 3));
@@ -39,13 +39,13 @@ public class FrameAdd  extends JDialog{
             JTextField price = new JTextField(Double.toString(f1.getPrice()), 15);
             panelAdd.add(price);
 
-            JLabel AName = new JLabel("com.netcracker.Author Name:");
+            JLabel AName = new JLabel("Author Name:");
             panelAdd.add(AName);
             JTextField AuthorName = new JTextField(f1.getAuthor().getName(), 15);
             panelAdd.add(AuthorName);
 
 
-            JLabel Gender1 = new JLabel("com.netcracker.Gender:");
+            JLabel Gender1 = new JLabel("Gender:");
             panelAdd.add(Gender1);
             Gender[] genders = {Gender.Female, Gender.Male, Gender.Trans, Gender.Other, Gender.Agender, Gender.Androgyne, Gender.Androgynes, Gender.Androgynous, Gender.Bigender, Gender.Cis, Gender.Cisgender, Gender.FTM, Gender.Genderqueer};
             JComboBox<Gender> gender = new JComboBox<>(genders);
